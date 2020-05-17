@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="main-block">
+    <form class="form" [formGroup]="stateForm" (ngSubmit)="onSubmit()">
+      <h1>Add State</h1>
+      <div class="info">
+        <input
+          class="fname"
+          type="text"
+          formControlName="name"
+          placeholder="Name"
+          [ngClass]="{
+            'has-error':
+              stateForm.get('name').errors &&
+              (stateForm.get('name').touched || stateForm.get('name').dirty)
+          }"
+        />
+        <span *ngIf="stateForm.get('name').errors.required"
+          ><span
+            *ngIf="
+              stateForm.get('name').errors &&
+              (stateForm.get('name').touched || stateForm.get('name').dirty)
+            "
+            class="has-error-text"
+            >Name field is required</span
+          ></span
+        >
+
+        <textarea
+          rows="4"
+          formControlName="description"
+          placeholder="Description"
+        ></textarea>
+      </div>
+      <button type="submit" href="/">Add state</button>
+      <button class="btn btn-secondary bg-secondary mt-3" type="reset">
+        Clear
+      </button>
+    </form>
+  </div>
+</div>

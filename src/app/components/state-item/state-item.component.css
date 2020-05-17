@@ -1,0 +1,11 @@
+h4 {
+  margin: 0 0 20px;
+  font-weight: 500;
+  color: #1c87c9;
+}
+.card-link {
+  border: none;
+  cursor: pointer;
+  color: #1c87c9;
+  background-color: white;
+}

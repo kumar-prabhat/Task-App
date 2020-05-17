@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="main-block">
+    <form class="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()" ng-onload>
+      <h1>Add Task</h1>
+      <div class="info">
+        <input
+          class="fname"
+          type="text"
+          formControlName="title"
+          placeholder="Title"
+        />
+        <select formControlName="state">
+          <option [ngValue]="null" disabled>Choose your state</option>
+          <option *ngFor="let prf of states" [ngValue]="prf.name">
+            {{ prf.name }}
+          </option>
+        </select>
+        <textarea
+          rows="4"
+          formControlName="description"
+          placeholder="Description"
+        ></textarea>
+        <!-- <mat-label>Choose a date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="scheduledDate" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="scheduledDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #scheduledDate></mat-datepicker> -->
+        <input
+          type="text"
+          formControlName="scheduledDate"
+          placeholder="Scheduled Date - 'MM-DD-YYYY' "
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" href="/">Add task</button>
+      <button class="btn btn-secondary bg-secondary mt-3" type="reset">
+        Clear
+      </button>
+    </form>
+  </div>
+</div>

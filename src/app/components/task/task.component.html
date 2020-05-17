@@ -1,0 +1,73 @@
+<div class="container mt-3">
+  <div class="col-md-3">
+    <div class="card" style="width: 60rem;">
+      <div class="card-body" *ngIf="!task.isEdit; else elseBlock">
+        <h4 class="card-title mb-3">{{ task.title }}</h4>
+        <h5 class="card-subtitle mb-3 text-muted">
+          <span class="font-weight-bold">State: </span>
+          {{ task.state }}
+        </h5>
+        <p class="card-text">
+          <span class="font-weight-bold text-muted">Description: </span>
+          {{ task.description }}
+        </p>
+        <p class="card-text">
+          <span class="font-weight-bold text-muted">Scheduled Date: </span>
+          {{ task.scheduledDate | date: "MMM dd yyyy" }}
+        </p>
+        <a href="#" class="card-link" (click)="EditTask(task)">Edit</a>
+        <a href="#" class="card-link" (click)="RemoveTask(task.id)">Delete</a>
+      </div>
+      <ng-template #elseBlock>
+        <div class="card-body">
+          <h5 class="card-title">Edit Task</h5>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="task.title"
+                  placeholder="Edit Title"
+                />
+              </div>
+              <div class="col-md-12 mb-3">
+                <!--  <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="task.state"
+                  placeholder="Edit State"
+                /> -->
+                <select [(ngModel)]="task.state" class="form-control">
+                  <option [ngValue]="null" disabled>Choose your state</option>
+                  <option *ngFor="let prf of states" [ngValue]="prf.name">
+                    {{ prf.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-12 mb-3">
+                <textarea
+                  rows="4"
+                  class="form-control"
+                  [(ngModel)]="task.description"
+                  placeholder="Edit Description"
+                ></textarea>
+              </div>
+              <div class="col-md-12 mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="task.scheduledDate"
+                  placeholder="Edit Date - 'MM-DD-YYYY'"
+                />
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="card-link" (click)="task.isEdit = false">Cancel</a>
+          <a href="#" class="card-link" (click)="UpdateTask(task)">Update</a>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

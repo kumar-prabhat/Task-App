@@ -1,0 +1,6 @@
+<div class="container mb-5">
+  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  <button class="text-center" (click)="showMore()">
+    Load more
+  </button>
+</div>
