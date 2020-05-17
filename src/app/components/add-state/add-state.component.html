@@ -14,16 +14,6 @@
               (stateForm.get('name').touched || stateForm.get('name').dirty)
           }"
         />
-        <span *ngIf="stateForm.get('name').errors.required"
-          ><span
-            *ngIf="
-              stateForm.get('name').errors &&
-              (stateForm.get('name').touched || stateForm.get('name').dirty)
-            "
-            class="has-error-text"
-            >Name field is required</span
-          ></span
-        >
 
         <textarea
           rows="4"
